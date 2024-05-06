@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreeen"
 import RegisterScreen from "./screens/RegisterScreen"
 import PreAppointScren from "./screens/PreAppointScreen"
 import OrderScreen from "./screens/OrderScreen"
+import StaOrderListScreen from "./screens/StaOrderListScreen"
 
 
 
@@ -24,6 +25,7 @@ function App () {
             <Route path="/staffs/:id" element={<StaffScreen />} />
             <Route path="/preappointment/:id?" element={<PreAppointScren />} />
             <Route path='/orders/:id?' element={<OrderScreen />} />
+            <Route path="/staffs/orders/:id" element={<StaOrderListScreen />} />
 
           </Routes>
         </Container>

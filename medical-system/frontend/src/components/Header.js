@@ -77,7 +77,7 @@ const Header = () => {
 
               {userInfo && userInfo.position && (
                 <NavDropdown title={userInfo.position} id='staffmenu'>
-                  <LinkContainer to='/staff/preAppointmentlist'>
+                  <LinkContainer to={`/staffs/orders/${userInfo._id}`}>
                     <NavDropdown.Item>未进行的Appointment</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/staff/todoAppointmentlist'>

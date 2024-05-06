@@ -3,7 +3,8 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   staffDetailsReducer,
-  staffListReducer
+  staffListReducer,
+  staffOrdersReducer
 } from './reducers/staffReducer'
 import {
   userDetailsReducer,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   preAppointment: preAppointmentReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
+  staffOrders: staffOrdersReducer,
 
 })
 

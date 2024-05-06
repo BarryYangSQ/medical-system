@@ -10,8 +10,6 @@ const initialState = {
   illnessDescription: '',
 }
 
-
-
 export const preAppointmentReducer = (state = initialState, action) => {
   switch (action.type) {
     case PREAPPOINTMENT_ADD_ITEM:
