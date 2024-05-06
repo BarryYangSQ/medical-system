@@ -1,16 +1,5 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
-//评论建模
-const reviewSchema = mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
-  },
-  {
-    timestamps: true,
-  }
-)
 
 const staffSchema = mongoose.Schema({
   name: {
@@ -60,7 +49,6 @@ const staffSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  reviews: [reviewSchema],
   numReviews: {
     type: Number,
     required: true,
@@ -68,9 +56,13 @@ const staffSchema = mongoose.Schema({
   description: {
     type: String,
     required: true,
+  },
+  isCheck: {
+    type: Boolean,
+    default: true,
   }
 }, {
-  timestamps: true, // Automatically create createdAt and updatedAt fields
+  timestamps: true,
 })
 
 // Password encryption middleware
@@ -82,6 +74,7 @@ staffSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt)
 })
 
+// Method to check if the entered password matches the hashed password
 staffSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { createOrder } from '../actions/orderAction'
+import { createOrder, transOrder } from '../actions/orderAction'
 import { Row, Col, Image, Form, Button, Card } from 'react-bootstrap'
 import { addToPreAppointment, removeFromPreApp } from '../actions/preAppointmentAction'
 import Message from '../components/Message'
 import { setIllnessDescription as setIllnessDescriptionAction } from '../actions/descriptionAction'
+import { updateOrderStatus } from '../actions/staffAction'
 
 const PreAppointmentScren = () => {
   const { id: staffId } = useParams() // 获取路由参数中的 id
@@ -17,6 +18,11 @@ const PreAppointmentScren = () => {
   const navigate = useNavigate()
   const preAppointment = useSelector((state) => state.preAppointment)
   const { preAppointmentItems } = preAppointment || { preAppointmentItems: [] }
+  const userInform = useSelector((state) => state.userLogin)
+  const { userInfo } = userInform
+  const editOrder = useSelector((state) => state.editOrder)
+  const { orderDetial } = editOrder
+
 
   // 处理文本输入框变化的函数
   const handleDescriptionChange = (e) => {
@@ -33,7 +39,7 @@ const PreAppointmentScren = () => {
     if (success) {
       navigate(`/orders/${order._id}`)
     }
-    // eslint-disable-next-line
+
   }, [success])
 
   useEffect(() => {
@@ -44,17 +50,17 @@ const PreAppointmentScren = () => {
 
   const checkoutHandler = () => {
     dispatch(setIllnessDescriptionAction(illnessDescription))
-
-
     dispatch(
       createOrder({
         preAppointmentItems: preAppointmentItems, // 从Redux状态中获取
-        illnessDescription: illnessDescription, // 直接从组件状态获取
+        illnessDescription: illnessDescription,
+
       })
     )
-    navigate('/login?redirect=/preappoinment')
+    // navigate('/login?redirect=/preappoinment')
 
   }
+
 
 
   useEffect(() => {
@@ -149,6 +155,16 @@ const PreAppointmentScren = () => {
               >
                 Make an appointment
               </Button>
+
+              {/* {userInfo && userInfo.position && (
+                <Button
+                  type='button'
+                  className='btn-block'
+                  onClick={Maketransfer}
+                >
+                  Make a transfer
+                </Button>
+              )} */}
             </Form>
           </Card.Body>
         </Card>

@@ -38,7 +38,7 @@ const RegisterScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      setMessage('密码不匹配')
+      setMessage('Password mismatch')
     } else {
       // 确保所有字段都传递到 register action
 
@@ -50,98 +50,98 @@ const RegisterScreen = () => {
 
   return (
     <FormContainer>
-      <h1>注册</h1>
+      <h1>Register</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>姓名：</Form.Label>
+          <Form.Label>Name：</Form.Label>
           <Form.Control
             type='name'
-            placeholder='请输入姓名'
+            placeholder='Please enter your name'
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='email'>
-          <Form.Label>邮箱地址：</Form.Label>
+          <Form.Label>E-mail：</Form.Label>
           <Form.Control
             type='email'
-            placeholder='请输入邮箱'
+            placeholder='Please enter your e-mail address'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='password'>
-          <Form.Label>密码：</Form.Label>
+          <Form.Label>Password：</Form.Label>
           <Form.Control
             type='password'
-            placeholder='请输入密码'
+            placeholder='Please enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='confirmPassword'>
-          <Form.Label>确认密码：</Form.Label>
+          <Form.Label>Confirm password:</Form.Label>
           <Form.Control
             type='password'
-            placeholder='请确认密码'
+            placeholder='confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='dateOfBirth'>
-          <Form.Label>出生日期：</Form.Label>
+          <Form.Label>Date of Birth：</Form.Label>
           <Form.Control
             type='date' // 注意这里使用了 date 类型
-            placeholder='请选择日期'
+            placeholder='Please select a date'
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='gender'>
-          <Form.Label>性别：</Form.Label>
+          <Form.Label>Gender：</Form.Label>
           <Form.Control
             as='select' // 下拉选择框
             value={gender}
             onChange={(e) => setGender(e.target.value)}
           >
-            <option value=''>选择性别</option>
-            <option value='male'>男</option>
-            <option value='female'>女</option>
-            <option value='other'>其他</option>
+            <option value=''>Select gender</option>
+            <option value='male'>Male</option>
+            <option value='female'>Female</option>
+            <option value='other'>other</option>
           </Form.Control>
         </Form.Group>
         <Form.Group controlId='address'>
-          <Form.Label>地址：</Form.Label>
+          <Form.Label>Address：</Form.Label>
           <Form.Control
             type='text'
-            placeholder='请输入地址'
+            placeholder='addres'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='postalCode'>
-          <Form.Label>邮政编码：</Form.Label>
+          <Form.Label>postalCode：</Form.Label>
           <Form.Control
             type='text'
-            placeholder='请输入邮政编码'
+            placeholder='please enter your postalCode'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          注册
+          Regist
         </Button>
       </Form>
       <Row className='py-3'>
         <Col>
-          已有账户？
+          Already have an account?？
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-            去登录
+            Go to login
           </Link>
         </Col>
       </Row>

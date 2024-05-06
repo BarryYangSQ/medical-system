@@ -10,7 +10,7 @@ import WaitingList from './models/waitingListModel.js'
 
 import connectDB from './config/db.js'
 import Order from './models/orderModel.js'
-
+import MedicalHistory from './models/medicalHistory.js'
 dotenv.config()
 connectDB()
 
@@ -22,6 +22,7 @@ const importData = async () => {
     await User.deleteMany()
     await Staff.deleteMany()
     await Order.deleteMany()
+    await MedicalHistory.deleteMany()
 
     //实现样本数据插入
     const createdUsers = await User.insertMany(users)
@@ -36,6 +37,7 @@ const importData = async () => {
     await WaitingList.insertMany(waitingList)
 
     await Staff.insertMany(sampleProducts)
+
 
     console.log('样本数据插入成功！'.green.inverse)
     process.exit()

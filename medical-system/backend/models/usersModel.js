@@ -36,21 +36,22 @@ const userSchema = mongoose.Schema({
     required: true,
     default: false,
   },
+  isCheck: { // New field added
+    type: Boolean,
+    default: false,
+  },
   illnessDescription: {
-    type: String,
-    required: true,
+    type: String, // Removed the 'required: true' attribute
   },
   treatmentAdvice: {
     advice: {
       type: String,
       required: false,
-
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Staff',
       required: false,
-
     }
   },
 }, {

@@ -1,4 +1,7 @@
 import {
+  EDIT_DETAIL_FAIL,
+  EDIT_DETAIL_REQUEST,
+  EDIT_DETAIL_SUCCESS,
   FETCH_ORDERS_FAIL,
   FETCH_ORDERS_REQUEST,
   FETCH_ORDERS_SUCCESS,
@@ -7,7 +10,13 @@ import {
   STAFF_DETAILS_SUCCESS,
   STAFF_LIST_FAIL,
   STAFF_LIST_REQUEST,
-  STAFF_LIST_SUCCESS
+  STAFF_LIST_SUCCESS,
+  CHECK_MEDICAL_REQUEST,
+  CHECK_MEDICAL_SUCCESS,
+  CHECK_MEDICAL_FAIL,
+  FETCH_MEDICAL_REQUEST,
+  FETCH_MEDICAL_SUCCESS,
+  FETCH_MEDICAL_FAIL
 } from "../contents/staffContents"
 
 //初始状态
@@ -54,6 +63,62 @@ export const staffOrdersReducer = (state = initialState, action) => {
     case FETCH_ORDERS_SUCCESS:
       return { ...state, loading: false, orders: action.payload }
     case FETCH_ORDERS_FAIL:
+      return { ...state, loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//获取医生对应的修改order
+export const editOrdersReducer = (state = { orderDetial: {} }, action) => {
+  switch (action.type) {
+    case EDIT_DETAIL_REQUEST:
+      return { loading: true, error: null }
+    case EDIT_DETAIL_SUCCESS:
+      return { loading: false, orderDetial: action.payload }
+    case EDIT_DETAIL_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//医生修改order的状态
+export const orderUpdateStatusReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'ORDER_UPDATE_STATUS_REQUEST':
+      return { loading: true }
+    case 'ORDER_UPDATE_STATUS_SUCCESS':
+      return { loading: false, success: true, order: action.payload }
+    case 'ORDER_UPDATE_STATUS_FAIL':
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//医生写入医疗记录
+export const createMedicalReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CHECK_MEDICAL_REQUEST:
+      return { loading: true }
+    case CHECK_MEDICAL_SUCCESS:
+      return { loading: false, success: true, medical: action.payload }
+    case CHECK_MEDICAL_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//查看患者病例和检查
+export const medicalReducer = (state = { medicalHistories: [], loading: false, error: null }, action) => {
+  switch (action.type) {
+    case FETCH_MEDICAL_REQUEST:
+      return { ...state, loading: true }
+    case FETCH_MEDICAL_SUCCESS:
+      return { ...state, loading: false, medicalHistories: action.payload }
+    case FETCH_MEDICAL_FAIL:
       return { ...state, loading: false, error: action.payload }
     default:
       return state

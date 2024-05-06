@@ -2,20 +2,30 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
+  createMedicalReducer,
+  editOrdersReducer,
+  medicalReducer,
+  orderUpdateStatusReducer,
   staffDetailsReducer,
   staffListReducer,
   staffOrdersReducer
 } from './reducers/staffReducer'
 import {
+  medicalHistoryReducer,
+  userDeleteReducer,
   userDetailsReducer,
+  userListReducer,
   userLoginReducer,
+  userOrdersReducer,
   userRegisterReducer,
+  userUpdateProfileReducer,
+  userUpdateReducer,
 } from './reducers/userReducer'
 import { preAppointmentReducer } from './reducers/preAppointmentReducer'
 import {
   orderCreateReducer,
   orderDetailsReducer,
-
+  transOrderReducer,
 } from './reducers/orderReducer'
 const reducer = combineReducers({
   staffList: staffListReducer,
@@ -23,11 +33,21 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
+  userDelete: userDeleteReducer,
+  userList: userListReducer,
   preAppointment: preAppointmentReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   staffOrders: staffOrdersReducer,
-
+  userOrders: userOrdersReducer,
+  editOrder: editOrdersReducer,
+  orderUpdateStatus: orderUpdateStatusReducer,
+  transOrder: transOrderReducer,
+  userUpdate: userUpdateReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  medicalHistroy: createMedicalReducer,
+  userMedical: medicalHistoryReducer,
+  staffMedical: medicalReducer,
 })
 
 

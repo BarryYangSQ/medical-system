@@ -34,39 +34,39 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1>登录</h1>
+      <h1>LOGIN </h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
-          <Form.Label>邮箱地址：</Form.Label>
+          <Form.Label>E-MAIL</Form.Label>
           <Form.Control
             type='email'
-            placeholder='请输入邮箱'
+            placeholder='Please enter your e-mail address'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='password'>
-          <Form.Label>密码：</Form.Label>
+          <Form.Label>PASS WORD：</Form.Label>
           <Form.Control
             type='password'
-            placeholder='请输入密码'
+            placeholder='Please enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           ></Form.Control>
         </Form.Group>
         <Button type='submit' variant='primary' disabled={loading}>
-          登录
+          LOGIN
         </Button>
       </Form>
       <Row className='py-3'>
         <Col>
-          新用户？
-          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-            去注册
+          new user？
+          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} className="my-custom-link">
+            Go to register
           </Link>
         </Col>
       </Row>

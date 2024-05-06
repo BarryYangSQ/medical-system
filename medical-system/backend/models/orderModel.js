@@ -16,14 +16,14 @@ const orderItemSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Scheduled', 'Completed', 'Cancelled', 'No Show'],
-    default: 'Scheduled'
+    enum: ['Scheduled', 'Transfer', 'Cancelled', 'Ready'],
+    default: 'Ready'
   },
   notes: {
     type: String,
   }
 }, {
-  timestamps: true, // Automatically create createdAt and updatedAt fields
+  timestamps: true,
 })
 
 const orderSchema = mongoose.Schema({
@@ -40,9 +40,8 @@ const orderSchema = mongoose.Schema({
 
 },
   {
-    timestamps: true, // Automatically create createdAt and updatedAt fields
+    timestamps: true,
   })
-
 
 const Order = mongoose.model('Order', orderSchema)
 

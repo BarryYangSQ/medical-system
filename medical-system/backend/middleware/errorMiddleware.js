@@ -1,5 +1,5 @@
 const notFound = (req, res, next) => {
-  const error = new Error(`查找不到 - ${req.originalUrl}`)
+  const error = new Error(`can not find out - ${req.originalUrl}`)
   res.status(404)
   next(error)
 }

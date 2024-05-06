@@ -14,7 +14,7 @@ connectDB()
 const app = express()
 app.use(express.json())
 app.get('/', (req, res) => {
-  res.send('服务器已经运行...')
+  res.send('server is running ...')
 })
 app.use('/api/staffs', staffRoutes)
 app.use('/api/users', userRoutes)
@@ -28,6 +28,6 @@ const PORT = process.env.PORT || 5000
 app.listen(
   PORT,
   console.log(
-    `服务器在${process.env.NODE_ENV}模式下的${PORT}端口号运行`.yellow.bold
+    `server is running under ${process.env.NODE_ENV} model${PORT}pot`.yellow.bold
   )
 )

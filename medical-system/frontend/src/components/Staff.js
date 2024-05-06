@@ -2,9 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 import { Link } from 'react-router-dom'
-/** 用于展示不同产品的信息
- * 此时的Prodcut组件是 Homescreen的子组件
-*/
+
 
 const Staff = ({ staff }) => {
   return (

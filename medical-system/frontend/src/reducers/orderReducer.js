@@ -5,6 +5,9 @@ import {
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
+  ORDER_TRANS_FAIL,
+  ORDER_TRANS_REQUEST,
+  ORDER_TRANS_SUCCESS,
 } from '../contents/orderContent'
 
 //创建订单reducer
@@ -33,6 +36,20 @@ export const orderDetailsReducer = (
     case ORDER_DETAILS_SUCCESS:
       return { loading: false, order: action.payload }
     case ORDER_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//转诊订单
+export const transOrderReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ORDER_TRANS_REQUEST:
+      return { loading: true }
+    case ORDER_TRANS_SUCCESS:
+      return { loading: false, order: action.payload, success: true }
+    case ORDER_TRANS_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

@@ -42,8 +42,8 @@ const OrderScreen = () => {
         return { variant: 'success', message: 'Completed' }
       case 'Cancelled':
         return { variant: 'danger', message: 'Cancelled' }
-      case 'No Show':
-        return { variant: 'warning', message: 'No Show' }
+      case 'Ready':
+        return { variant: 'warning', message: 'Ready' }
       default:
         return { variant: 'secondary', message: 'Unknow' }
     }

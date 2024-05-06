@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/usersModel.js'
+import Staff from '../models/staffModel.js'
 import asyncHandler from 'express-async-handler'
 
 const protect = asyncHandler(async (req, res, next) => {
@@ -12,15 +13,16 @@ const protect = asyncHandler(async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1]
       const decoded = jwt.verify(token, process.env.JWT_SECRET)
       req.user = await User.findById(decoded.id).select('-password')
+
       next()
     } catch (error) {
       res.status(401)
-      throw new Error('未授权，token验证失败')
+      throw new Error('Not an authorized administrator')
     }
   }
   if (!token) {
     res.status(401)
-    throw new Error('未授权，没有token')
+    throw new Error('Not an authorized administrator')
   }
 })
 
@@ -29,7 +31,7 @@ const admin = (req, res, next) => {
     next()
   } else {
     res.status(401)
-    throw new Error('不是被授权的管理员')
+    throw new Error('Not an authorized administrator')
   }
 }
 

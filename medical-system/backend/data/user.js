@@ -10,6 +10,7 @@ const user = [
     address: '123 Cherry Lane, Springfield',
     postalCode: '98765',
     isAdmin: true,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Persistent cough and fever for three days.',
     treatmentAdvice: 'Recommended to undergo a full blood test and chest X-ray.',
   },
@@ -22,6 +23,7 @@ const user = [
     address: '456 Maple Street, Capital City',
     postalCode: '12345',
     isAdmin: true,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Migraines recurring frequently over the last month.',
     treatmentAdvice: 'Advised to consult a neurologist and consider lifestyle changes.',
   },
@@ -34,6 +36,7 @@ const user = [
     address: '789 Oak Avenue, Lakeside',
     postalCode: '54321',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Chronic back pain, worsens with prolonged sitting.',
     treatmentAdvice: 'Suggested physical therapy and ergonomic adjustments at work.',
   },
@@ -46,6 +49,7 @@ const user = [
     address: '321 Pine Street, Riverside',
     postalCode: '67890',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Insomnia, difficulty falling asleep and staying asleep.',
     treatmentAdvice: 'Recommended sleep hygiene practices and relaxation techniques.',
   },
@@ -58,6 +62,7 @@ const user = [
     address: '567 Elm Avenue, Mountainview',
     postalCode: '23456',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Seasonal allergies causing nasal congestion and sneezing.',
     treatmentAdvice: 'Prescribed antihistamines and advised to avoid allergens.',
   },
@@ -70,6 +75,7 @@ const user = [
     address: '890 Pine Lane, Sunset Valley',
     postalCode: '76543',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Anxiety and panic attacks triggered by social situations.',
     treatmentAdvice: 'Cognitive-behavioral therapy and relaxation techniques recommended.',
   },
@@ -82,6 +88,7 @@ const user = [
     address: '234 Cedar Street, Oceanview',
     postalCode: '32198',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Type 2 diabetes, struggling to manage blood sugar levels.',
     treatmentAdvice: 'Dietary changes and regular exercise regimen prescribed.',
   },
@@ -94,9 +101,11 @@ const user = [
     address: '456 Oakwood Drive, Lakeshore',
     postalCode: '87654',
     isAdmin: false,
+    isCheck: true,  // 新增数据项
     illnessDescription: 'Stress-related headaches and muscle tension in shoulders.',
     treatmentAdvice: 'Stress management techniques and regular massage therapy suggested.',
   },
 ]
+
 
 export default user
