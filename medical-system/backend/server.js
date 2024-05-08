@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'//引入express框架 创建服务器
 import dotenv from 'dotenv'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
@@ -19,6 +20,31 @@ app.get('/', (req, res) => {
 app.use('/api/staffs', staffRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
+
+
+
+const __dirname = path.resolve()
+
+app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+// 对所有请求返回 index.html，确保前端路由可以正常工作
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+})
+
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+//   })
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('服务器已经运行...')
+//   })
+// }
+
 
 app.use(notFound)
 app.use(errorHandler)

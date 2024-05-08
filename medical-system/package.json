@@ -10,7 +10,9 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "build": "react-scripts build",
+    "heroku-postbuild": "npm install --legacy-peer-deps && npm run build"
   },
   "author": "yunlin chen",
   "license": "ISC",
